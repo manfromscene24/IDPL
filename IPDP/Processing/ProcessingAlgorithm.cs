@@ -22,7 +22,7 @@ namespace IPDP.Processing
         {
             if (ValidateParameters(parameters))
             {
-                var copy = sourceImage.Copy;
+                var copy = sourceImage;
                 PreProcessing?.Invoke(copy);
                 AlgorithmImplementation(copy, parameters);
                 PostProcessing?.Invoke(copy);

@@ -8,5 +8,9 @@ namespace IPDP.Resources.Writer
 {
     public class PngWriter : IImageWriter
     {
+        public void WriteImage(Image image, string filename)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
