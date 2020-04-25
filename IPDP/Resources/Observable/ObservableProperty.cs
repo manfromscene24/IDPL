@@ -42,6 +42,16 @@ namespace IPDP.Resources.Observable
             _value = new TPropertyType();
             _subscribers = new List<SubscribedCommand<TPropertyType>>();
         }
+
+        public void Subscribe(SubscribedCommand<TPropertyType> subscriber)
+        {
+            _subscribers.Add(subscriber);
+        }
+
+        public void Unsubscribe(SubscribedCommand<TPropertyType> subscriber)
+        {
+            _subscribers.Remove(subscriber);
+        }
     }
 
     public class ObservableProperty<TPropertyType, TReturnType>
@@ -85,6 +95,16 @@ namespace IPDP.Resources.Observable
         {
             _value = new TPropertyType();
             _subscribers = new List<SubscribedCommand<TPropertyType, TReturnType>>();
+        }
+
+        public void Subscribe(SubscribedCommand<TPropertyType, TReturnType> subscriber)
+        {
+            _subscribers.Add(subscriber);
+        }
+
+        public void Unsubscribe(SubscribedCommand<TPropertyType, TReturnType> subscriber)
+        {
+            _subscribers.Remove(subscriber);
         }
     }
 }
