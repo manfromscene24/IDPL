@@ -52,11 +52,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Processing\ProcessingStepEventArgs.cs" />
-    <Compile Include="Resources\Enumerator\MaskEnumerator.cs" />
-    <Compile Include="Resources\Enumerator\PixelEnumerator.cs" />
-    <Compile Include="Resources\Enumerator\ImageEnumerator.cs" />
+    <Compile Include="Resources\Iterator\MaskIterator.cs" />
+    <Compile Include="Resources\Iterator\PixelIterator.cs" />
+    <Compile Include="Resources\Iterator\ImageIterator.cs" />
     <Compile Include="Resources\Image.cs" />
     <Compile Include="Resources\ImageBuilder.cs" />
+    <Compile Include="Resources\Observable\Command\ICommand.cs" />
+    <Compile Include="Resources\Observable\Command\SubscribedCommand.cs" />
+    <Compile Include="Resources\Observable\ObservableProperty.cs" />
+    <Compile Include="Resources\Pixel.cs" />
+    <Compile Include="Resources\PositionedPixel.cs" />
     <Compile Include="Resources\Reader\BmpReader.cs" />
     <Compile Include="Resources\Reader\IImageReader.cs" />
     <Compile Include="Resources\Reader\PngReader.cs" />

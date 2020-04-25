@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPDP.Resources.Observer.Command
+namespace IPDP.Resources.Observable.Command
 {
     public abstract class SubscribedCommand<TPropertyType> : ICommand
         where TPropertyType : new()

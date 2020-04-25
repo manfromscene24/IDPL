@@ -1,4 +1,4 @@
-﻿using IPDP.Resources.Observer.Command;
+﻿using IPDP.Resources.Observable.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
