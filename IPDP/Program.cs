@@ -17,7 +17,7 @@ namespace IPDP
             var imageName = "test.bmp";
             var image = builder.GetImage(imageName);
 
-            var image2Name = "3.png";
+            var image2Name = "test.png";
             var image2 = builder.GetImage(image2Name);
 
             if (image == null)
@@ -33,9 +33,10 @@ namespace IPDP
             meanFilter.PostProcessingEvent.Subscribe(new MeanPostProcessingCommand());
             meanFilter.ProcessingStepEvent.Subscribe(new MeanProcessingStepCommand());
             var result = meanFilter.Process(image, parameters);
-
+            
             var writer = new BmpWriter();
             writer.WriteImage(result, "written.bmp");
+
 
             ProcessingAlgorithm binarization = new Binarization();
             binarization.PreProcessingEvent.Subscribe(new BinarizationPreProccesingCommand());
@@ -45,11 +46,19 @@ namespace IPDP
             result = binarization.Process(image, parameters);
             writer.WriteImage(result, "binarizedImage.bmp");
 
+            
+
             ProcessingAlgorithm inverse = new Inverse();
             inverse.PreProcessingEvent.Subscribe(new InversePreProcessingCommand());
             inverse.PostProcessingEvent.Subscribe(new InversePostProcessingCommand());
             result = inverse.Process(image, parameters);
             writer.WriteImage(result, "inverseImage.bmp");
+
+            var writer2 = new PngWriter();
+            var result2 = binarization.Process(image2, parameters);
+            writer2.WriteImage(result2, "test.png");
+
+
         }
     }
 }

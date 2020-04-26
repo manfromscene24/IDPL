@@ -16,10 +16,6 @@ namespace IPDP.Resources.Reader
         {
             public static Pixel[,] ReadImage(String filename)
             {
-
-                //Mat mat = CvInvoke.Imread(filename, Emgu.CV.CvEnum.ImreadModes.AnyColor);
-                //Image<Bgr, Byte> image = mat.ToImage<Bgr, Byte>();
-
                 Image<Bgr, Byte> image = new Image<Bgr, Byte>(filename);
 
                 Pixel[,] adaptedImage = new Pixel[image.Height, image.Width];
@@ -28,7 +24,6 @@ namespace IPDP.Resources.Reader
                 {
                     for (var iCol = 0; iCol < image.Width; iCol += 1)
                     {
-
                         var pixel = image[iCol, iRow];
                         adaptedImage[iRow, iCol] = new Pixel((byte)pixel.Red, (byte)pixel.Green, (byte)pixel.Blue);
                     }
