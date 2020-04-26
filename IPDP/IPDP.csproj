@@ -58,6 +58,9 @@
     <Compile Include="Processing\AlgorithmImplementations\Binarization\BinarizationPostProccesingCommand.cs" />
     <Compile Include="Processing\AlgorithmImplementations\Binarization\BinarizationPreProccesingCommand.cs" />
     <Compile Include="Processing\AlgorithmImplementations\Binarization\BinarizationProccessingStepCommand.cs" />
+    <Compile Include="Processing\AlgorithmImplementations\Inverse\Inverse.cs" />
+    <Compile Include="Processing\AlgorithmImplementations\Inverse\InversePostProcessingCommand.cs" />
+    <Compile Include="Processing\AlgorithmImplementations\Inverse\InversePreProcessingCommand.cs" />
     <Compile Include="Processing\AlgorithmImplementations\MeanFilter\MeanFilterImplementation.cs" />
     <Compile Include="Processing\AlgorithmImplementations\MeanFilter\MeanPostProcessingCommand.cs" />
     <Compile Include="Processing\AlgorithmImplementations\MeanFilter\MeanPreProcessingCommand.cs" />

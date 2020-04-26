@@ -34,6 +34,7 @@ namespace IPDP.Resources.Writer
         public void WriteImage(Image image, string filename)
         {
             BmpWriterAdapter.WriteImage(image, filename);
+            Console.WriteLine();
         }
     }
 }

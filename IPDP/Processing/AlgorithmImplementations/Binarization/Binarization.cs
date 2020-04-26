@@ -16,21 +16,20 @@ namespace IPDP.Processing.AlgorithmImplementations.Binarization
         protected override Image AlgorithmImplementation(Image sourceImage, Dictionary<String, String> parameters)
         {
             var resultImage = new Image(sourceImage.Height, sourceImage.Width);
-            var threshold = Int32.Parse(parameters["threshold"]);
-
-            Pixel thresholdPix = new Pixel((byte)threshold, (byte)threshold, (byte)threshold);
-           
-           
+            var threshold = Int32.Parse(parameters["threshold"]);       
+            
             for (var iRow = 0; iRow < resultImage.Height; iRow++)
             {
                 for(var iCol = 0; iCol <resultImage.Width; iCol++)
-                { 
-                    if (sourceImage[iRow,iCol].R <= thresholdPix.R && sourceImage[iRow, iCol].G <= thresholdPix.G && sourceImage[iRow,iCol].B <= thresholdPix.B)
+                {
+                    var pixelValue = sourceImage[iRow, iCol].R + sourceImage[iRow, iCol].G + sourceImage[iRow, iCol].B;
+
+                    if (pixelValue <= threshold*3)
                     {
                         resultImage[iRow, iCol] = new Pixel(0, 0, 0);
                         
                     }
-                    else if(sourceImage[iRow, iCol].R > thresholdPix.R && sourceImage[iRow, iCol].G > thresholdPix.G && sourceImage[iRow, iCol].B > thresholdPix.B)
+                    else
                     {
                         resultImage[iRow, iCol] = new Pixel();
                         resultImage[iRow, iCol].R = 255; resultImage[iRow, iCol].G = 255; resultImage[iRow, iCol].B = 255;
