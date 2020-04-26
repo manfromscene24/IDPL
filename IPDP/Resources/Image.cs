@@ -37,6 +37,11 @@ namespace IPDP.Resources
             Pixels = pixels;
         }
 
+        public Image(int height, int width)
+        {
+            Pixels = new Pixel[height, width];
+        }
+
         public Pixel this[int row, int col]
         {
             get

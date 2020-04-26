@@ -5,31 +5,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace IPDP.Resources.Observable
+namespace IPDP.Resources.Event
 {
     public class Event
     {
-        protected List<ICommand> _subscribers;
+        protected List<EventCommand> _subscribers;
 
         public Event()
         {
-            _subscribers = new List<ICommand>();
+            _subscribers = new List<EventCommand>();
         }
 
-        public void Publish()
+        public void Publish(EventArgs args)
         {
             foreach (var subscriber in _subscribers)
             {
+                subscriber.Args = args;
                 subscriber.Execute();
             }
         }
 
-        public void Subscribe(ICommand subscriber)
+        public void Subscribe(EventCommand subscriber)
         {
             _subscribers.Add(subscriber);
         }
 
-        public void Unsubscribe(ICommand subscriber)
+        public void Unsubscribe(EventCommand subscriber)
         {
             _subscribers.Remove(subscriber);
         }

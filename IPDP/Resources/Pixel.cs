@@ -13,7 +13,10 @@ namespace IPDP.Resources
         public byte B { get; set; }
         public byte A { get; set; }
 
-        public Pixel() { }
+        public Pixel() 
+        {
+            A = 255;
+        }
 
         public Pixel(byte r, byte g, byte b)
         {

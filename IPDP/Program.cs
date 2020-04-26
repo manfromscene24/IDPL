@@ -1,11 +1,9 @@
-﻿using IPDP.Resources;
-using IPDP.Resources.Iterator;
+﻿using IPDP.Processing;
+using IPDP.Processing.AlgorithmImplementations.MeanFilter;
+using IPDP.Resources;
 using IPDP.Resources.Writer;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPDP
 {
@@ -14,13 +12,24 @@ namespace IPDP
         static void Main(string[] args)
         {
             var builder = new ImageBuilder();
-            var test = builder.GetImage("test.bmp");
-            for (var iterator = new MaskIterator(test, 3); iterator != null; iterator = iterator + 1)
+            var imageName = "test.bmp";
+            var image = builder.GetImage(imageName);
+            if (image == null)
             {
-                Console.Out.WriteLine(iterator.MaskedPixels);
+                Console.Out.WriteLine($"Image \"{imageName}\" not found. Ending program.");
+                return;
             }
+
+            ProcessingAlgorithm meanFilter = new MeanFilterImplementation();
+            var parameters = new Dictionary<String, String>();
+            parameters.Add("maskSize", "3");
+            meanFilter.PreProcessingEvent.Subscribe(new MeanPreProcessingCommand());
+            meanFilter.PostProcessingEvent.Subscribe(new MeanPostProcessingCommand());
+            meanFilter.ProcessingStepEvent.Subscribe(new MeanProcessingStepCommand());
+            var result = meanFilter.Process(image, parameters);
+
             var writer = new BmpWriter();
-            writer.WriteImage(test, "written.bmp");
+            writer.WriteImage(result, "written.bmp");
         }
     }
 }
