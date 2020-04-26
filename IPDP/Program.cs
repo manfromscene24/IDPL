@@ -9,6 +9,14 @@ using System.Collections.Generic;
 
 namespace IPDP
 {
+    public enum EUserOption
+    {
+        InsertCoin,
+        EjectCoin,
+        BuyProduct,
+        FillMachine,
+        InspectMachine
+    }
     class Program
     {
         static void Main(string[] args)
