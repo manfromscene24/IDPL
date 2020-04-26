@@ -1,6 +1,7 @@
 ﻿using IPDP.Processing;
 using IPDP.Processing.AlgorithmImplementations.MeanFilter;
 using IPDP.Processing.AlgorithmImplementations.Binarization;
+using IPDP.Processing.AlgorithmImplementations.Inverse;
 using IPDP.Resources;
 using IPDP.Resources.Writer;
 using System;
@@ -39,6 +40,12 @@ namespace IPDP
             parameters.Add("threshold", "127");
             result = binarization.Process(image, parameters);
             writer.WriteImage(result, "binarizedImage.bmp");
+
+            ProcessingAlgorithm inverse = new Inverse();
+            inverse.PreProcessingEvent.Subscribe(new InversePreProcessingCommand());
+            inverse.PostProcessingEvent.Subscribe(new InversePostProcessingCommand());
+            result = inverse.Process(image, parameters);
+            writer.WriteImage(result, "inverseImage.bmp");
         }
     }
 }
