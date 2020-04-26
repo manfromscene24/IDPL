@@ -1,5 +1,6 @@
 ﻿using IPDP.Processing;
 using IPDP.Processing.AlgorithmImplementations.MeanFilter;
+using IPDP.Processing.AlgorithmImplementations.Binarization;
 using IPDP.Resources;
 using IPDP.Resources.Writer;
 using System;
@@ -30,6 +31,14 @@ namespace IPDP
 
             var writer = new BmpWriter();
             writer.WriteImage(result, "written.bmp");
+
+            ProcessingAlgorithm binarization = new Binarization();
+            binarization.PreProcessingEvent.Subscribe(new BinarizationPreProccesingCommand());
+            binarization.PostProcessingEvent.Subscribe(new BinarizationPostProccesingCommand());
+            binarization.ProcessingStepEvent.Subscribe(new BinarizationProccessingStepCommand());
+            parameters.Add("threshold", "127");
+            result = binarization.Process(image, parameters);
+            writer.WriteImage(result, "binarizedImage.bmp");
         }
     }
 }
