@@ -8,6 +8,7 @@ using System.Drawing.Imaging;
 using Emgu.CV;
 using Emgu.CV.Structure;
 using System.Drawing;
+using IPDP.Resources.Iterator;
 
 namespace IPDP.Resources.Writer
 {
@@ -17,16 +18,18 @@ namespace IPDP.Resources.Writer
         {
             public static void WriteImage(Image image, String filename)
             {
-                var bitmap = new Bitmap(image.Width, image.Height);
+                var mat = new Mat(image.Height, image.Width, Emgu.CV.CvEnum.DepthType.Cv8U, 3);
+                var img = mat.ToImage<Bgr, Byte>();
 
-                var img = new Image<Bgr, Byte>(bitmap);
-
-                
-
-                using (Image<Bgr, Byte> img = new Image<Bgr, Byte>(filename))
+                for (var iterator = new PixelIterator(image); iterator != null; iterator = iterator + 1)
                 {
-                    img.Save($"written{filename}.png");
+                    img.Data[iterator.CurrentPixel.Y, iterator.CurrentPixel.X, 0] = iterator.CurrentPixel.DecoratedPixel.B;
+                    img.Data[iterator.CurrentPixel.Y, iterator.CurrentPixel.X, 1] = iterator.CurrentPixel.DecoratedPixel.G;
+                    img.Data[iterator.CurrentPixel.Y, iterator.CurrentPixel.X, 2] = iterator.CurrentPixel.DecoratedPixel.R;
                 }
+                img.Save(filename);
+
+                mat.Dispose();
             }
         }
         public void WriteImage(Image image, String filename)
