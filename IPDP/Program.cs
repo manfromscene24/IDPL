@@ -17,7 +17,7 @@ namespace IPDP
             var imageName = "test.bmp";
             var image = builder.GetImage(imageName);
 
-            var image2Name = "test.png";
+            var image2Name = "3.png";
             var image2 = builder.GetImage(image2Name);
 
             if (image == null)
