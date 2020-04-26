@@ -15,6 +15,10 @@ namespace IPDP
             var builder = new ImageBuilder();
             var imageName = "test.bmp";
             var image = builder.GetImage(imageName);
+
+            var image2Name = "test.png";
+            var image2 = builder.GetImage(image2Name);
+
             if (image == null)
             {
                 Console.Out.WriteLine($"Image \"{imageName}\" not found. Ending program.");
