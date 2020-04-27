@@ -18,7 +18,7 @@
             loadingState = new LoadingState(this);
             paramState = new ParameterEnteringState(this);
 
-            programState = loadingState;
+            programState = unloadedState;
         }
 
         public void SetMachineState(State state)

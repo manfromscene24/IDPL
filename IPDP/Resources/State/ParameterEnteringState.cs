@@ -60,7 +60,7 @@ namespace IPDP.Resources.State
                 parameters.Add(parameter, value);
             }
             Program.builder.WriteImage(algorithm.Process(Program.image, parameters), "result.png");
-            Program.SetMachineState(Program.loadingState);
+            Program.SetMachineState(Program.unloadedState);
             return true;
         }
 
