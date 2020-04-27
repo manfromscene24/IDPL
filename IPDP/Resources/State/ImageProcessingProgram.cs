@@ -13,8 +13,6 @@ namespace IPDP.Resources.State
         public UnloadedState unloadedState;
         public LoadingState loadingState;
         public ParameterEnteringState paramState;
-
-        var builder = new ImageBuilder();
        
         public ImageProcessingProgram()
         {

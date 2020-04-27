@@ -88,6 +88,12 @@
     <Compile Include="Resources\Reader\BmpReader.cs" />
     <Compile Include="Resources\Reader\IImageReader.cs" />
     <Compile Include="Resources\Reader\PngReader.cs" />
+    <Compile Include="Resources\State\ImageProcessingProgram.cs" />
+    <Compile Include="Resources\State\LoadedState.cs" />
+    <Compile Include="Resources\State\LoadingState.cs" />
+    <Compile Include="Resources\State\ParameterEnteringState.cs" />
+    <Compile Include="Resources\State\State.cs" />
+    <Compile Include="Resources\State\UnloadedState.cs" />
     <Compile Include="Resources\Writer\BmpWriter.cs" />
     <Compile Include="Resources\Writer\IImageWriter.cs" />
     <Compile Include="Resources\Writer\PngWriter.cs" />

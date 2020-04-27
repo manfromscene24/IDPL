@@ -8,6 +8,10 @@ namespace IPDP.Resources.State
 {
     public class LoadingState : State
     {
+        public LoadingState(ImageProcessingProgram program) : base(program)
+        {
+        }
+
         public override bool ChooseAlgorithm()
         {
             throw new NotImplementedException();

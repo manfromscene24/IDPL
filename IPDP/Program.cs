@@ -11,11 +11,11 @@ namespace IPDP
 {
     public enum EUserOption
     {
-        InsertCoin,
-        EjectCoin,
-        BuyProduct,
-        FillMachine,
-        InspectMachine
+        LoadImage,
+        EnterPath,
+        ChooseAlgorithm,
+        EnterParameters
+
     }
     class Program
     {

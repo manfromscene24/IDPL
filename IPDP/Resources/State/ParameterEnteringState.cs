@@ -9,14 +9,19 @@ namespace IPDP.Resources.State
     public class ParameterEnteringState : State
     {
         public int algorithmOption;
+
+        public ParameterEnteringState(ImageProcessingProgram program) : base(program)
+        {
+        }
+
         public override bool ChooseAlgorithm()
         {
             throw new NotImplementedException();
         }
 
-        public override bool EnterParameters();
+        public override bool EnterParameters()
         {
-            
+            throw new NotImplementedException();
         }
 
         public override bool EnterPath()
@@ -30,3 +35,4 @@ namespace IPDP.Resources.State
         }
     }
 }
+

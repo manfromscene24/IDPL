@@ -8,6 +8,10 @@ namespace IPDP.Resources.State
 {
     public class LoadedState : State
     {
+        public LoadedState(ImageProcessingProgram program) : base(program)
+        {
+        }
+
         public override bool ChooseAlgorithm()
         {
             Console.WriteLine("Please choose an Image Processing Algorithm.");
@@ -15,6 +19,7 @@ namespace IPDP.Resources.State
             Program.SetMachineState(Program.paramState);
             Program.paramState.algorithmOption = option;
             Program.paramState.EnterParameters();
+            return true;
         }
 
         public override bool EnterParameters()
