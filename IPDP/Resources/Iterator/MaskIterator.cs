@@ -10,7 +10,7 @@ namespace IPDP.Resources.Iterator
         protected List<PositionedPixel> _maskedPixels;
         protected List<InMaskPixel> _inMaskPixels;
 
-        public IEnumerable<PositionedPixel> MaskedPixels 
+        public IEnumerable<PositionedPixel> MaskedPixels
         {
             get { return _maskedPixels.AsEnumerable(); }
         }

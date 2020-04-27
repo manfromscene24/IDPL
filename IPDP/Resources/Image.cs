@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPDP.Resources
 {
     public class Image
     {
         public Pixel[,] Pixels { get; protected set; }
-        public int Height 
+        public int Height
         {
             get
             {
@@ -56,7 +52,7 @@ namespace IPDP.Resources
                 }
                 return Pixels[row, col];
             }
-            set 
+            set
             {
                 if (Pixels == null)
                 {

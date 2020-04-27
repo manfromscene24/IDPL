@@ -1,9 +1,7 @@
 ﻿using IPDP.Resources;
-using IPDP.Resources.Event.Args;
 using IPDP.Resources.Iterator;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace IPDP.Processing.AlgorithmImplementations.Inverse
 {
@@ -12,7 +10,7 @@ namespace IPDP.Processing.AlgorithmImplementations.Inverse
         protected override Image AlgorithmImplementation(Image sourceImage, Dictionary<String, String> parameters)
         {
             var resultImage = new Image(sourceImage.Height, sourceImage.Width);
-            
+
             for (var iterator = new PixelIterator(sourceImage); iterator != null; iterator = iterator + 1)
             {
                 Pixel inversePix = new Pixel((byte)255, (byte)255, (byte)255);

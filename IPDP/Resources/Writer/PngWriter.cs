@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing.Imaging;
-using Emgu.CV;
+﻿using Emgu.CV;
 using Emgu.CV.Structure;
-using System.Drawing;
 using IPDP.Resources.Iterator;
+using System;
 
 namespace IPDP.Resources.Writer
 {

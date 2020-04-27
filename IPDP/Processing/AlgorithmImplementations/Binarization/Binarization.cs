@@ -1,9 +1,6 @@
 ﻿using IPDP.Resources;
-using IPDP.Resources.Event.Args;
-using IPDP.Resources.Iterator;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace IPDP.Processing.AlgorithmImplementations.Binarization
 {
@@ -16,27 +13,27 @@ namespace IPDP.Processing.AlgorithmImplementations.Binarization
         protected override Image AlgorithmImplementation(Image sourceImage, Dictionary<String, String> parameters)
         {
             var resultImage = new Image(sourceImage.Height, sourceImage.Width);
-            var threshold = Int32.Parse(parameters["threshold"]);       
-            
+            var threshold = Int32.Parse(parameters["threshold"]);
+
             for (var iRow = 0; iRow < resultImage.Height; iRow++)
             {
-                for(var iCol = 0; iCol <resultImage.Width; iCol++)
+                for (var iCol = 0; iCol < resultImage.Width; iCol++)
                 {
                     var pixelValue = sourceImage[iRow, iCol].R + sourceImage[iRow, iCol].G + sourceImage[iRow, iCol].B;
 
-                    if (pixelValue <= threshold*3)
+                    if (pixelValue <= threshold * 3)
                     {
                         resultImage[iRow, iCol] = new Pixel(0, 0, 0);
-                        
+
                     }
                     else
                     {
                         resultImage[iRow, iCol] = new Pixel();
                         resultImage[iRow, iCol].R = 255; resultImage[iRow, iCol].G = 255; resultImage[iRow, iCol].B = 255;
                     }
-                } 
+                }
             }
-                
+
             return resultImage;
         }
 

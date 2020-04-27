@@ -28,14 +28,14 @@ namespace IPDP.Resources
             {
                 return null;
             }
-            extension= extension.Substring(1);
+            extension = extension.Substring(1);
             if (Readers.ContainsKey(extension))
             {
                 try
                 {
                     return new Image(Readers[extension].ReadImage(filename));
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                     return null;

@@ -1,12 +1,5 @@
-﻿using IPDP.Processing;
-using IPDP.Processing.AlgorithmImplementations.MeanFilter;
-using IPDP.Processing.AlgorithmImplementations.Binarization;
-using IPDP.Processing.AlgorithmImplementations.Inverse;
-using IPDP.Resources;
-using IPDP.Resources.Writer;
+﻿using IPDP.Resources.State;
 using System;
-using System.Collections.Generic;
-using IPDP.Resources.State;
 
 namespace IPDP
 {

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPDP.Resources.State
 {
@@ -31,7 +27,7 @@ namespace IPDP.Resources.State
 
         public override bool EnterPath()
         {
-            
+
             string imgPath = Console.ReadLine();
             String imageName = System.IO.Path.GetFileName(imgPath);
             Program.image = Program.builder.GetImage(imageName);

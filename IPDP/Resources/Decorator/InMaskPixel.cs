@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IPDP.Resources.Decorator
+﻿namespace IPDP.Resources.Decorator
 {
     public class InMaskPixel
     {

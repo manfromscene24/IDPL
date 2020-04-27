@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPDP.Resources.State
 {
@@ -26,7 +22,7 @@ namespace IPDP.Resources.State
         {
             var option = Console.ReadLine();
             int intCheck;
-            while(Int32.TryParse(option, out intCheck) && (intCheck <= 0 || intCheck > 3))
+            while (Int32.TryParse(option, out intCheck) && (intCheck <= 0 || intCheck > 3))
             {
                 Console.WriteLine("Try again.");
                 option = Console.ReadLine();

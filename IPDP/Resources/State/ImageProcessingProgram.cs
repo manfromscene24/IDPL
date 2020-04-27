@@ -28,7 +28,7 @@
 
         public void Execute()
         {
-            while(programState.Execute() == false)
+            while (programState.Execute() == false)
             {
                 programState.PrintMenu();
             }

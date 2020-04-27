@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IPDP.Resources
+﻿namespace IPDP.Resources
 {
     public class Pixel
     {
@@ -13,7 +7,7 @@ namespace IPDP.Resources
         public byte B { get; set; }
         public byte A { get; set; }
 
-        public Pixel() 
+        public Pixel()
         {
             A = 255;
         }

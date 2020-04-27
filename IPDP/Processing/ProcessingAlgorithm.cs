@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using IPDP.Resources;
+﻿using IPDP.Resources;
 using IPDP.Resources.Event;
+using System;
+using System.Collections.Generic;
 
 namespace IPDP.Processing
 {

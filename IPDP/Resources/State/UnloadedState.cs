@@ -1,14 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPDP.Resources.State
 {
     public class UnloadedState : State
     {
-        public UnloadedState(ImageProcessingProgram program):base(program)
+        public UnloadedState(ImageProcessingProgram program) : base(program)
         {
 
         }
@@ -44,9 +40,9 @@ namespace IPDP.Resources.State
                 Console.WriteLine("Try again.");
                 option = Console.ReadLine();
             }
-            if(intCheck == 1) 
-            Program.SetMachineState(Program.loadingState);
-            else if(intCheck == 2)
+            if (intCheck == 1)
+                Program.SetMachineState(Program.loadingState);
+            else if (intCheck == 2)
                 Environment.Exit(0);
             return true;
         }

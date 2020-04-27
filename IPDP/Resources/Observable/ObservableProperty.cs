@@ -1,9 +1,5 @@
 ﻿using IPDP.Resources.Observable.Command;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace IPDP.Resources.Observable
 {
@@ -11,7 +7,7 @@ namespace IPDP.Resources.Observable
         where TPropertyType : new()
     {
         protected List<SubscribedCommand<TPropertyType>> _subscribers;
-        protected TPropertyType _value; 
+        protected TPropertyType _value;
 
         public TPropertyType Value
         {
@@ -20,7 +16,7 @@ namespace IPDP.Resources.Observable
             {
                 if (!EqualityComparer<TPropertyType>.Default.Equals(_value, value))
                 {
-                    foreach(var command in _subscribers)
+                    foreach (var command in _subscribers)
                     {
                         command.OldValue = _value;
                         command.NewValue = value;

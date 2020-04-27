@@ -10,10 +10,10 @@ namespace IPDP.Resources.State
     public class ParameterEnteringState : State
     {
         public String algorithmOption;
-        
+
         public ParameterEnteringState(ImageProcessingProgram program) : base(program)
         {
-            
+
         }
 
         public override bool PrintMenu()
@@ -28,9 +28,9 @@ namespace IPDP.Resources.State
         }
 
         public override bool EnterParameters()
-        {   
+        {
             ProcessingAlgorithm algorithm;
-            switch(Program.paramState.algorithmOption)
+            switch (Program.paramState.algorithmOption)
             {
                 case "1":
                     algorithm = new MeanFilterImplementation();
@@ -50,7 +50,7 @@ namespace IPDP.Resources.State
                     algorithm.PostProcessingEvent.Subscribe(new InversePostProcessingCommand());
                     break;
                 default:
-                    return false; 
+                    return false;
             }
             var parameters = new Dictionary<String, String>();
             foreach (var parameter in algorithm.ExpectedParameters)
