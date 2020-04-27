@@ -13,14 +13,24 @@ namespace IPDP.Resources.State
 
         }
 
-        public override bool ChooseAlgorithm()
+        public override bool PrintMenu()
         {
             Console.WriteLine("Please choose an Image Processing Algorithm: ");
             Console.WriteLine("1.Mean Filter");
             Console.WriteLine("2.Binarization");
             Console.WriteLine("3.Inverse");
-            int option = Console.Read();
-            option = Console.Read();
+            return true;
+        }
+
+        public override bool ChooseAlgorithm()
+        {
+            var option = Console.ReadLine();
+            int intCheck;
+            while(Int32.TryParse(option, out intCheck) && (intCheck <= 0 || intCheck > 3))
+            {
+                Console.WriteLine("Try again.");
+                option = Console.ReadLine();
+            }
             Program.SetMachineState(Program.paramState);
             Program.paramState.algorithmOption = option;
             return true;
@@ -39,6 +49,11 @@ namespace IPDP.Resources.State
         public override bool LoadImage()
         {
             throw new NotImplementedException();
+        }
+
+        public override bool Execute()
+        {
+            return ChooseAlgorithm();
         }
     }
 }

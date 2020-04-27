@@ -10,6 +10,10 @@ namespace IPDP.Resources.State
     {
         public ImageProcessingProgram Program;
 
+        public abstract bool Execute();
+
+        public abstract bool PrintMenu();
+
         public abstract bool LoadImage();
 
         public abstract bool EnterPath();

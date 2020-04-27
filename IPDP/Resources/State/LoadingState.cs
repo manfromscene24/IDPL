@@ -12,6 +12,12 @@ namespace IPDP.Resources.State
         {
         }
 
+        public override bool PrintMenu()
+        {
+            Console.WriteLine("Please enter a path: ");
+            return true;
+        }
+
         public override bool ChooseAlgorithm()
         {
             throw new NotImplementedException();
@@ -25,25 +31,29 @@ namespace IPDP.Resources.State
 
         public override bool EnterPath()
         {
-            Console.WriteLine("Please enter a path: ");
+            
             string imgPath = Console.ReadLine();
-            imgPath = Console.ReadLine();
             String imageName = System.IO.Path.GetFileName(imgPath);
-                Program.image = Program.builder.GetImage(imageName);
-                if (Program.image == null)
-                {
-                    Console.Out.WriteLine($"Image \"{imageName}\" not found. Ending program.");
-                    return false;
-                }
-                else
-                    Console.Out.WriteLine($"Image \"{imageName}\" loaded succesfully!");
-                Program.SetMachineState(Program.loadedState);
+            Program.image = Program.builder.GetImage(imageName);
+            if (Program.image == null)
+            {
+                Console.Out.WriteLine($"Image \"{imageName}\" not found.");
+                return false;
+            }
+            else
+                Console.Out.WriteLine($"Image \"{imageName}\" loaded succesfully!");
+            Program.SetMachineState(Program.loadedState);
             return true;
         }
 
         public override bool LoadImage()
         {
             throw new NotImplementedException();
+        }
+
+        public override bool Execute()
+        {
+            return EnterPath();
         }
     }
 }

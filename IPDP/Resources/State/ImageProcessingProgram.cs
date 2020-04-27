@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace IPDP.Resources.State
+﻿namespace IPDP.Resources.State
 {
     public class ImageProcessingProgram
     {
-        private State programState;
+        public State programState { get; protected set; }
         public LoadedState loadedState;
         public UnloadedState unloadedState;
         public LoadingState loadingState;
@@ -16,8 +10,7 @@ namespace IPDP.Resources.State
 
         public Image image;
         public ImageBuilder builder = new ImageBuilder();
-        public Writer.BmpWriter bmpWriter = new Writer.BmpWriter();
-        public Writer.PngWriter pngWriter = new Writer.PngWriter();
+
         public ImageProcessingProgram()
         {
             loadedState = new LoadedState(this);
@@ -25,27 +18,7 @@ namespace IPDP.Resources.State
             loadingState = new LoadingState(this);
             paramState = new ParameterEnteringState(this);
 
-            programState = unloadedState;
-        }
-
-        public void UpdateState(EUserOption option)
-        {
-            switch(option)
-            {
-                case EUserOption.LoadImage:
-                    LoadingImage();
-                    break;
-                case EUserOption.EnterPath:
-                    EnterPath();
-                    break;
-                case EUserOption.ChooseAlgorithm:
-                    ChooseAlgorithm();
-                    break;
-                case EUserOption.EnterParameters:
-                    EnterParameters();
-                    break;
-
-            }
+            programState = loadingState;
         }
 
         public void SetMachineState(State state)
@@ -53,37 +26,12 @@ namespace IPDP.Resources.State
             programState = state;
         }
 
-        private void EnterPath()
+        public void Execute()
         {
-            programState.EnterPath();
-        }
-
-        public void LoadingImage()
-        {
-            programState.LoadImage();
-        }
-
-        public void ChooseAlgorithm()
-        {
-            programState.ChooseAlgorithm();
-        }
-
-        public void EnterParameters()
-        {
-            programState.EnterParameters();
-        }
-
-        public int Inspect()
-        {
-            if (programState.ToString() == "IPDP.Resources.State.UnloadedState")
-                return 1;
-            else if (programState.ToString() == "IPDP.Resources.State.LoadingState")
-                return 2;
-            else if (programState.ToString() == "IPDP.Resources.State.LoadedState")
-                return 3;
-            else if (programState.ToString() == "IPDP.Resources.State.ParameterEnteringState")
-                return 4;
-            else return 0;
+            while(programState.Execute() == false)
+            {
+                programState.PrintMenu();
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ namespace IPDP.Processing
         public Event ProcessingStepEvent { get; protected set; }
         public Event PostProcessingEvent { get; protected set; }
 
-        protected HashSet<String> ExpectedParameters { get; }
+        public HashSet<String> ExpectedParameters { get; }
 
         public ProcessingAlgorithm()
         {

@@ -30,10 +30,20 @@ namespace IPDP.Resources.State
             return false;
         }
 
+        public override bool Execute()
+        {
+            throw new NotImplementedException();
+        }
+
         public override bool LoadImage()
         { 
             Program.SetMachineState(Program.loadingState);
             return true;
+        }
+
+        public override bool PrintMenu()
+        {
+            throw new NotImplementedException();
         }
     }
 }
