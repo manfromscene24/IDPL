@@ -13,7 +13,11 @@ namespace IPDP.Resources.State
         public UnloadedState unloadedState;
         public LoadingState loadingState;
         public ParameterEnteringState paramState;
-       
+
+        public Image image;
+        public ImageBuilder builder = new ImageBuilder();
+        public Writer.BmpWriter bmpWriter = new Writer.BmpWriter();
+        public Writer.PngWriter pngWriter = new Writer.PngWriter();
         public ImageProcessingProgram()
         {
             loadedState = new LoadedState(this);
@@ -34,6 +38,13 @@ namespace IPDP.Resources.State
                 case EUserOption.EnterPath:
                     EnterPath();
                     break;
+                case EUserOption.ChooseAlgorithm:
+                    ChooseAlgorithm();
+                    break;
+                case EUserOption.EnterParameters:
+                    EnterParameters();
+                    break;
+
             }
         }
 
@@ -60,6 +71,19 @@ namespace IPDP.Resources.State
         public void EnterParameters()
         {
             programState.EnterParameters();
+        }
+
+        public int Inspect()
+        {
+            if (programState.ToString() == "IPDP.Resources.State.UnloadedState")
+                return 1;
+            else if (programState.ToString() == "IPDP.Resources.State.LoadingState")
+                return 2;
+            else if (programState.ToString() == "IPDP.Resources.State.LoadedState")
+                return 3;
+            else if (programState.ToString() == "IPDP.Resources.State.ParameterEnteringState")
+                return 4;
+            else return 0;
         }
     }
 }

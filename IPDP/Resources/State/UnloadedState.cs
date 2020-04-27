@@ -31,8 +31,7 @@ namespace IPDP.Resources.State
         }
 
         public override bool LoadImage()
-        {
-            Console.WriteLine("Image Loading...");
+        { 
             Program.SetMachineState(Program.loadingState);
             return true;
         }

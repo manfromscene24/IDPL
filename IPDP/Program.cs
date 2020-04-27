@@ -6,6 +6,7 @@ using IPDP.Resources;
 using IPDP.Resources.Writer;
 using System;
 using System.Collections.Generic;
+using IPDP.Resources.State;
 
 namespace IPDP
 {
@@ -21,57 +22,70 @@ namespace IPDP
     {
         static void Main(string[] args)
         {
-            var builder = new ImageBuilder();
-            var imageName = "test.bmp";
-            var image = builder.GetImage(imageName);
 
-            var image2Name = "test.png";
-            var image2 = builder.GetImage(image2Name);
-
-            if (image == null)
+            ImageProcessingProgram program = new ImageProcessingProgram();
+            Console.WriteLine("============== Image Processing ==============");
+            Console.WriteLine("1. Load Image");
+            Console.WriteLine("2. EXIT");
+            int option = Console.Read();
+            while (option != '0')
             {
-                Console.Out.WriteLine($"Image \"{imageName}\" not found. Ending program.");
-                return;
+                switch (program.Inspect())
+                {
+                    case 1:
+                            switch (option)
+                            {
+                                case '1':
+                                    program.UpdateState(EUserOption.LoadImage);
+                                    break;
+                                case '2':
+                                    Environment.Exit(0);
+                                    break;
+
+                            }
+                        Console.WriteLine("1. Enter Path");
+                        Console.WriteLine("2. Exit");
+
+                        break;
+                    case 2:
+                            switch (option)
+                            {
+                                case '1':
+                                    program.UpdateState(EUserOption.EnterPath);
+
+                                    break;
+                                case '2':
+                                    Environment.Exit(0);
+                                    break;
+                            }
+                        if (program.Inspect() == 3)
+                        {
+                            Console.WriteLine("1. Choose Algorithm");
+                            Console.WriteLine("2. Exit");
+                        }
+                        break;
+
+                    case 3:
+        
+                            switch (option)
+                            { 
+                                case '1':
+                                    program.UpdateState(EUserOption.ChooseAlgorithm);
+                                    break;
+                                case '2':
+                                    Environment.Exit(0);
+                                    break;
+
+                            }
+                     
+                        break;
+                    case 4:
+                        program.UpdateState(EUserOption.EnterParameters);
+                        break;
+                }
+
+                option = Console.Read();
             }
-
-            ProcessingAlgorithm meanFilter = new MeanFilterImplementation();
-            var parameters = new Dictionary<String, String>();
-            parameters.Add("maskSize", "3");
-            meanFilter.PreProcessingEvent.Subscribe(new MeanPreProcessingCommand());
-            meanFilter.PostProcessingEvent.Subscribe(new MeanPostProcessingCommand());
-            meanFilter.ProcessingStepEvent.Subscribe(new MeanProcessingStepCommand());
-            var result = meanFilter.Process(image, parameters);
-            var result2 = meanFilter.Process(image2, parameters);
-            
-            
-            var writer = new BmpWriter();
-            var writer2 = new PngWriter();
-            writer.WriteImage(result, "written.bmp");
-            writer2.WriteImage(result2, "meanPng.png");
-            
-
-
-            ProcessingAlgorithm binarization = new Binarization();
-            binarization.PreProcessingEvent.Subscribe(new BinarizationPreProccesingCommand());
-            binarization.PostProcessingEvent.Subscribe(new BinarizationPostProccesingCommand());
-            binarization.ProcessingStepEvent.Subscribe(new BinarizationProccessingStepCommand());
-            parameters.Add("threshold", "127");
-            result = binarization.Process(image, parameters);
-            writer.WriteImage(result, "binarizedImage.bmp");
-            result2 = binarization.Process(image2, parameters);
-            writer2.WriteImage(result2, "binarPng.png");
-
-            
-
-            ProcessingAlgorithm inverse = new Inverse();
-            inverse.PreProcessingEvent.Subscribe(new InversePreProcessingCommand());
-            inverse.PostProcessingEvent.Subscribe(new InversePostProcessingCommand());
-            result = inverse.Process(image, parameters);
-            writer.WriteImage(result, "inverseImage.bmp");
-            result2 = inverse.Process(image2, parameters);
-            writer2.WriteImage(result2, "inversePng.png");
-
-
         }
     }
 }
